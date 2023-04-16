@@ -35,6 +35,12 @@
       ],
       "@app/errors/*": [
         "libs/errors/src/*"
+      ],
+      "@app/shared": [
+        "libs/shared/src"
+      ],
+      "@app/shared/*": [
+        "libs/shared/src/*"
       ]
     }
   }
