@@ -29,6 +29,12 @@
       ],
       "@app/post/*": [
         "libs/post/src/*"
+      ],
+      "@app/errors": [
+        "libs/errors/src"
+      ],
+      "@app/errors/*": [
+        "libs/errors/src/*"
       ]
     }
   }

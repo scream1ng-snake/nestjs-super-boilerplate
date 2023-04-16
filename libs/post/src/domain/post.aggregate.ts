@@ -3,6 +3,7 @@ import { randomStringGenerator } from "@nestjs/common/utils/random-string-genera
 import { PostServices } from "./services";
 import { IsUUID, IsString, IsNotEmpty, IsBoolean, validateSync } from "class-validator";
 import { Exclude } from "class-transformer";
+import { DomainError } from "@app/errors";
 
 export class PostAggregate extends PostServices implements IPost {
   @IsUUID()
@@ -46,7 +47,7 @@ export class PostAggregate extends PostServices implements IPost {
     })
 
     if(errors.length) {
-      throw new Error('Post not valid')
+      throw new DomainError(errors, 'Пост не валидный')
     }
 
 
