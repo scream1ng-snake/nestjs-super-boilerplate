@@ -83,7 +83,8 @@
       "^@app/entities(|/.*)$": "<rootDir>/libs/entities/src/$1",
       "^@app/post(|/.*)$": "<rootDir>/libs/post/src/$1",
       "^@app/errors(|/.*)$": "<rootDir>/libs/errors/src/$1",
-      "^@app/shared(|/.*)$": "<rootDir>/libs/shared/src/$1"
+      "^@app/shared(|/.*)$": "<rootDir>/libs/shared/src/$1",
+      "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1"
     }
   }
 }
