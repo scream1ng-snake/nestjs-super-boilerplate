@@ -1,9 +1,11 @@
 import { CurrentUser, ICurrentUser } from '@app/auth';
+import { JwtGuard } from '@app/auth/guards';
 import { PostFacade } from '@app/post/application-services';
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { CreatePostDto } from './dto';
 
+@UseGuards(JwtGuard)
 @Controller('post')
 export class PostController {
   constructor(

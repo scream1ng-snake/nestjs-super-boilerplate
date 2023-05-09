@@ -4,6 +4,7 @@ import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { JwtFactory } from './config';
 import { GUARDS } from './guards'
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { GUARDS } from './guards'
     JwtModule.registerAsync(JwtFactory)
   ],
   providers: [
+    JwtStrategy,
     AuthService,
     ...GUARDS
   ],
