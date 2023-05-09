@@ -60,14 +60,14 @@ export class PostFacade {
   }
 
   private getPost(id: string) {
-    this.queryBus.execute<
+    return this.queryBus.execute<
       GetPostQuery,
       GetPostQueryHandler['execute']
     >(new GetPostQuery(id))
   }
 
   private getPosts(pagination: PaginationDto) {
-    this.queryBus.execute<
+    return this.queryBus.execute<
       GetPostsQuery,
       GetPostsQueryHandler['execute']
     >(new GetPostsQuery(pagination))
