@@ -23,6 +23,7 @@ export class UpdatePostCommandHandler
     }
     Object.assign(existsPost, post)
     const postAggregate = PostAggregate.create(existsPost);
+    postAggregate.plainToInstance();
     await this.postRepository.save(postAggregate);
     return postAggregate;
   }

@@ -44,9 +44,7 @@ export class PostAggregate extends PostServices implements IPost {
       : _post.updatedAt
     
     Object.assign(_post, post);
-    const errors = validateSync(_post, {
-      whitelist: true
-    })
+    const errors = validateSync(_post);
 
     if(errors.length) {
       throw new DomainError(errors, 'Пост не валидный')

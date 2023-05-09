@@ -25,6 +25,7 @@ export class SetPublishedCommandHandler
     }
     const postAggregate = PostAggregate.create(existsPost);
     postAggregate.setPublished();
+    postAggregate.plainToInstance();
     await this.postRepository.save(postAggregate);
     return postAggregate;
   }
