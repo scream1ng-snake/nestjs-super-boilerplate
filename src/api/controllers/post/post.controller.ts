@@ -1,7 +1,7 @@
 import { CurrentUser, ICurrentUser } from '@app/auth';
 import { PostFacade } from '@app/post/application-services';
 import { Body, Controller, Post } from '@nestjs/common';
-import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
+import { v4 as uuidv4 } from 'uuid';
 import { CreatePostDto } from './dto';
 
 @Controller('post')
@@ -17,7 +17,7 @@ export class PostController {
   ) {
     return this.postFacade.commands.createPost({
       ...createPostDto,
-      authorId: randomStringGenerator()
+      authorId: uuidv4()
       // authorId: userId
     })
   }

@@ -18,11 +18,8 @@ export class PostAdapter implements PostRepository {
   ) { }
 
   async save(post: IPost): Promise<PostAggregate> {
-    if (post?.id) {
-      const existsPost = await this.findOne(post.id);
-      if (!existsPost) {
-        throw new BadRequestException(`Post by id ${post.id} not found`)
-      }
+    const existsPost = await this.findOne(post.id);
+    if (existsPost) {
       const { id, ...toUpdate } = post;
       await this.postRepository.update({ id }, toUpdate);
       return this.findOne(post.id);
@@ -39,7 +36,8 @@ export class PostAdapter implements PostRepository {
         return null;
       })
     if (!existsPost) {
-      throw new BadRequestException(`Post by id ${id} not found`)
+      return null
+      // throw new BadRequestException(`Post by id ${id} not found`)
     }
     return PostAggregate.create(existsPost);
   }
@@ -68,7 +66,7 @@ export class PostAdapter implements PostRepository {
   }
 
   async delete(id: string): Promise<boolean> {
-    const result =  await this.postRepository
+    const result = await this.postRepository
       .delete({ id })
       .catch(err => {
         this.logger.error(err);
